@@ -1,0 +1,22 @@
+services:
+  chrome:
+    image: selenium/standalone-chrome:latest
+    shm_size: 2g
+    ports:
+      - 4444:4444
+  script:
+    build: .
+    environment:
+      # Set ClubFeast User Creds.
+      - _CLUBFEAST_USER_EMAIL=${_CLUBFEAST_USER_EMAIL}
+      - _CLUBFEAST_USER_PASSWORD=${_CLUBFEAST_USER_PASSWORD}
+      # Set 8X8 User Creds.
+      - _8X8_USER_USERNAME=${_8X8_USER_USERNAME}
+      - _8X8_USER_PASSWORD=${_8X8_USER_PASSWORD}
+      # Set Orders Region to EAST or WEST.
+      - ORDERS_REGION=${ORDERS_REGION}
+    network_mode: host
+    depends_on:
+      - chrome
+    volumes:
+      - ./data:/clubfeast/data/

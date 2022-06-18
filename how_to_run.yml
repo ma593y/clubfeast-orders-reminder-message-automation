@@ -1,6 +1,3 @@
-# clubfeast
-
-
 # To run script on a local machine:
 
   # Create virtualenv(first time only).
@@ -39,3 +36,4 @@
     docker compose up --build --remove-orphans --abort-on-container-exit
     # or
     docker compose up --build --remove-orphans --abort-on-container-exit > script_logs.txt
+
