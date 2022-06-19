@@ -147,7 +147,7 @@ else:
         element_orders = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.TAG_NAME, 'table')))
         table_soup = BeautifulSoup(element_orders.get_attribute('innerHTML'), 'html.parser')
     else:
-        sys.exit('! Url not found.')
+        sys.exit('\n! Url not found.')
 
     scraped_data = []
     for tr in table_soup.tbody.contents:
@@ -160,6 +160,9 @@ else:
                         tr_data[field[0]] = td.get_text().strip()
             if tr_data['confirmation_status_field'].lower() not in ['cancelled', 'not sent', 'delivered']:
                 scraped_data.append(tr_data)
+
+    if len(scraped_data) == 0:
+        sys.exit('\n! No orders available.')
 
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
     # Creating pandas dataframe and pre-processing data.
