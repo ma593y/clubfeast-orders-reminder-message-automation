@@ -234,6 +234,12 @@ for x in list(orders_data_df.index):
     print('- '*27)
     # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
     
+    # ignore the reminder message for the restaurants which have ignore reminder message status for orders...
+    if orders_data_df.loc[x, "reminder_message_status"] == "ignored - restaurant is in ignore list":
+        print(f'\n! Ignoring the reminder message for {orders_data_df.loc[x, "package_field"]}.\n', flush=True)
+        
+        continue
+
     # if pickup_time of next order is already passed then move to the next order...
     if current_datetime > pickup_datetime:
         print(f'\n! Skipping the reminder message for {orders_data_df.loc[x, "package_field"]}.\n', flush=True)
