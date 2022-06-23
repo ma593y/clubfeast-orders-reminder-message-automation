@@ -6,16 +6,12 @@ import json, sys, os
 import pandas as pd
 from time import sleep
 from pytz import timezone
-from dotenv import load_dotenv
 from datetime import datetime, timedelta
 
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-# from selenium.webdriver.chrome.service import Service
-# from selenium.webdriver.chrome.options import Options
-# from webdriver_manager.chrome import ChromeDriverManager
 
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -23,6 +19,8 @@ from selenium.webdriver.support import expected_conditions as EC
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 # Load environment variables from .env file.
+
+# from dotenv import load_dotenv
 
 # load_dotenv()     # uncomment this line to run locally
 
@@ -172,6 +170,14 @@ else:
     scraping_df['reminder_message_status'] = ['scheduled' for x in range(len(scraping_df.index))]
     scraping_df.sort_values(by=['date_field', 'pickup_time_field'], inplace=True)
     scraping_df.reset_index(drop=True, inplace=True)
+
+    with open("restaurants_to_ignore.json") as restaurants_to_ignore_file:
+        restaurants_to_ignore_list = json.load(restaurants_to_ignore_file)
+
+    for x in scraping_df.index:
+        if scraping_df.loc[x, "restaurant_field"] in restaurants_to_ignore_list:
+            scraping_df.loc[x, "reminder_message_status"] = "ignored - restaurant is in ignore list"
+
     scraping_df.to_excel(orders_data_file_path)
     orders_data_df = scraping_df.copy()
     print(f'\n# Saved data to: {orders_data_file_path}', flush=True)
