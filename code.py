@@ -308,12 +308,12 @@ for x in list(orders_data_df.index):
 
                 # Sending reminder message to the restaurant.
                 send_message_to = str((orders_data_df.loc[x, 'restaurant_cell_phone_field'])).split(',')[0]
-                element = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.XPATH, ('//*[@id="root"]/div/div/div[3]/div[2]/button')))).click()
-                element = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.XPATH, ('//*[@id="root"]/div/div/div[3]/div[2]/div[2]/div/div/div[2]/button')))).click()
-                element = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CSS_SELECTOR, ('#root > div > div.sc-jUEmfL.itFCsC > div.sc-gsxoIA.bITjmy > div > div > div.sc-fIYNhG.bKqzGN > div > div > input')))).send_keys(send_message_to)
+                element = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.XPATH, ('//*[@id="root"]/div/div[1]/div[3]/div[2]/button')))).click()
+                element = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.XPATH, ('//*[@id="root"]/div/div[1]/div[3]/div[2]/div[2]/div/div/div[2]/button')))).click()
+                element = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CSS_SELECTOR, ('#root > div > div.sc-jUEmfL.itFCsC > div.sc-GTVdH.hqebZU > div > div > div.sc-hTZspN.dcBnQt > div > div > input')))).send_keys(send_message_to)
                 element = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.XPATH, ('//*[@id="root"]/div/div[4]/div[2]/div/div/div[2]/div/div[2]/div/div[1]/div/ol/li[1]/div/div/div[2]/div[1]/div/div/span')))).click()
                 sleep(5)
-                element = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CSS_SELECTOR, ('#root > div > div > div.sc-iciGqv.cKHRza > div.sc-dbGSci.eDoklR > div > div > div > div.sc-hXvPvl.fcnLga > div > div.sc-VhHcL.efQveT > div > div > div.DraftEditor-editorContainer > div > div > div > div'))))
+                element = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CSS_SELECTOR, ('#root > div > div.sc-jnrPYG.dsqpnR > div.sc-jOFsKT.llEXfu > div.sc-eUZRJm.bTPerm > div > div > div > div.sc-evBdYF.ewHnZc > div > div.sc-joCgVf.fACAsD > div > div > div.DraftEditor-editorContainer > div > div > div > div'))))
                 for text in _message.split('\n'):
                     element.send_keys(text)
                     element.send_keys(Keys.SHIFT + Keys.ENTER)
