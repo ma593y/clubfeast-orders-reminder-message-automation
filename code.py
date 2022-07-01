@@ -212,12 +212,16 @@ if driver.current_url == _8x8_data["url_signin"]:
     # Closing dialogs after signing in.
     sleep(20)
     element = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.XPATH, ('//*[@id="___reactour"]/div[4]/div/button')))).click()
+    print('\nclose pop up no. 01', flush=True)
     sleep(5)
     element = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.XPATH, ('//*[@id="root"]/div/div[4]/div[2]/div/div/button[2]')))).click()
+    print('\nclose pop up no. 02', flush=True)
     sleep(5)
     element = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.XPATH, ('//*[@id="root"]/div/div[4]/div[2]/div[2]/button[1]')))).click()
+    print('\nclose pop up no. 03', flush=True)
     sleep(5)
-    element = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CSS_SELECTOR, ('#root > div > div.sc-jUEmfL.itFCsC > div.sc-gsxoIA.fkaZtB > svg > g > path')))).click()
+    element = WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CSS_SELECTOR, ('#root > div > div.sc-jUEmfL.itFCsC > div.sc-GTVdH.exUUgn > svg > g > path')))).click()
+    print('\nclose pop up no. 04', flush=True)
     sleep(5)
 
 for x in list(orders_data_df.index):
