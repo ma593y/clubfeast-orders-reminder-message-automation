@@ -352,6 +352,11 @@ for x in list(orders_data_df.index):
 
     else:
         print(f'\n! Skipping the reminder message for {orders_data_df.loc[x, "package_field"]}.\n', flush=True)
+        if orders_data_df.loc[x, 'reminder_message_status'] == 'scheduled':
+            orders_data_df.loc[x, 'reminder_message_status'] = 'not sent - skipped due to less time remaining for pickup'
+            orders_data_df.to_excel(orders_data_file_path)
+            print(f"\n# Setting the reminder message status to 'not sent - skipped due to less time remaining for pickup'.", flush=True)
+            print(f'\n# Saved data to: {orders_data_file_path}', flush=True)
 
 driver.close()
 driver.quit()
