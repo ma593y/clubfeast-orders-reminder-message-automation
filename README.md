@@ -1,3 +1,11 @@
+# Clubfeast-Orders-Reminder-Message-Automation
+
+An automation script to automate the orders reminder messages in the following way, 
+
+    1. Scrap the orders data from clubfeast admin portal.
+    2. Preprocess the orders data and schedule them.
+    3. Send the reminder messages through 8x8 before the specified period of time for each order.
+
 ## To run script on a local machine:
 
   #### 1. Create virtualenv(first time only).
