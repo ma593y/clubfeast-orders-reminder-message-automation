@@ -16,6 +16,8 @@ An automation script to automate the orders reminder messages in the following w
 
   #### 3. Install libraries(first time only).
     pip install selenium webdriver-manager beautifulsoup4 pandas pytz python-dotenv
+    # or
+    pip install -r requirements.txt
 
   #### 4. Run chrome remote webdriver on docker.
     docker run -d -p 4444:4444 --shm-size="2g" selenium/standalone-chrome:latest
