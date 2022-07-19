@@ -156,7 +156,12 @@ else:
                     field = [field for field in td['class'] if (('field' in field) and (field in _table_fields.keys()))]
                     if field:
                         tr_data[field[0]] = td.get_text().strip()
-            if tr_data['confirmation_status_field'].lower() not in ['cancelled', 'delivered']:
+            if (
+                (tr_data['confirmation_status_field'].lower() not in ['cancelled', 'delivered'])
+                and (tr_data['package_field'].strip() != '')
+                and (tr_data['pickup_time_field'].strip() != '-')
+                and (tr_data['date_field'].strip() != '-')
+                ):
                 scraped_data.append(tr_data)
 
     if len(scraped_data) == 0:
