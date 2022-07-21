@@ -66,8 +66,6 @@ _clubfeast_data = {
 _8x8_data = {
     "user_username": os.environ.get('_8X8_USER_USERNAME'),
     "user_password": os.environ.get('_8X8_USER_PASSWORD'),
-    "user_number_temp": "(208) 696-1679",
-    "user_number_clubfeast": "(707) 653-0716",
     "url_signin": "https://sso.8x8.com/v2/login",
     "url_messages": "https://work.8x8.com/conversations",
 }
